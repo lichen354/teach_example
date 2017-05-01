@@ -16,7 +16,7 @@ public class FileWriterDemo {
 		 * 如果文件不存在，则会 自动创建
 		 * 如果文件存在，则会 覆盖
 		 * 
-		 * 如果在构造函数中 加入 true ， 可以实现文件续写
+		 * 如果在构造函数中 加入 true ， 可以实现文件续写 
 		 */
 		Writer writer = null;
 		try {
