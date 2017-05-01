@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.Writer;
 
 public class FileWriterDemo {
+	private static final String LINE_SEPARATOR = System.getProperty("line.separator");
+	
 	public static void main(String[] args) {
 		/**
 		 * 创建一个可以往文件中写入 字符 数据的字符输出流对象
@@ -21,7 +23,11 @@ public class FileWriterDemo {
 //			Writer writer = new FileWriter("test.txt");
 			writer = new FileWriter("test.txt",true);
 			writer.write("haha");
+			writer.write("haha \r\n xixi");//windowx
+			writer.write("haha \n xixi");//linux
 			
+			writer.write("haha " + LINE_SEPARATOR + " xixi");//调用操作系统的换行
+
 			writer.flush();
 			
 		} catch (IOException e) {
