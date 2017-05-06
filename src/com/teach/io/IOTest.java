@@ -2,10 +2,14 @@ package com.teach.io;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 
 public class IOTest {
 	public static void main(String[] args) throws IOException {
@@ -86,9 +90,13 @@ public class IOTest {
 	
 	/**
 	 * 5- copy
-	 * 是字符流么 ?
+	 * 是字符流么 ? writer
 	 * 是 但是需要编码
 	 * 这是 必须 使用桥梁  因为 这两个流有制定字符集转换的功能
+	 * @throws IOException 
 	 */
-	
+	public static void copy5() throws IOException{
+		OutputStream out = new FileOutputStream("");
+		BufferedWriter bufw = new BufferedWriter(new OutputStreamWriter(out, "gbk")); 
+	}
 }
