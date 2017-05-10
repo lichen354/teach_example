@@ -1,4 +1,4 @@
-package com.etc.demo.io;
+package com.teach.io;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,8 +10,10 @@ import java.io.OutputStream;
 public class K_SplitFileDemo {
 	private static final int SIZE = 1024*1024;
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		File file = new File("D:\\test2.wrf");
 		
+		split(file);
 	}
 	
 	/**
@@ -25,13 +27,20 @@ public class K_SplitFileDemo {
 		
 		OutputStream out = null;
 		
+		//那么文件切好以后放在哪里呢;我们需要指定 文件夹下的文件
+				File dir = new File("D:\\temp");
+				if(!dir.exists())
+					dir.mkdir();
+		
+		
 		//2-按照 1M 切割
 		byte[] buff = new byte[SIZE];
 		
 		int len = 0;
 		int count = 1;
 		while((len = is.read(buff)) != -1){
-			out = new FileOutputStream( ++count + ".part");
+//			out = new FileOutputStream( ++count + ".part");
+			out = new FileOutputStream( new File(dir, count++ + ".part") );
 			out.write(buff, 0, len);
 		}
 		
@@ -40,9 +49,9 @@ public class K_SplitFileDemo {
 		
 		
 		//那么文件切好以后放在哪里呢;我们需要指定 文件夹下的文件
-		File dir = new File("C:\\temp");
+		/*File dir = new File("D:\\temp");
 		if(!dir.exists())
-			dir.createNewFile();
-		out = new FileOutputStream( new File(dir,  ++count + ".part") );
+			dir.mkdir();
+		out = new FileOutputStream( new File(dir,  ++count + ".part") );*/
 	}
 }
